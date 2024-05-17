@@ -51,4 +51,4 @@ function checkgrade( totalMarks, examType) {
     }
     }
 }
-console.log(checkgrade(60, 'final'))
+console.log(checkgrade(34, 'final'))
