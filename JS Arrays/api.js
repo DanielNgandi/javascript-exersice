@@ -51,34 +51,6 @@ const users = [
       ]
     }
   ];
-  //function analyzeSocialMediaData(users) {
-    //return users.reduce((acc, user) => {
-      //const activePosts = user.posts.filter(post => {
-        //const postDate = new Date(post.timestamp);
-        //return (Date.now() - postDate.getTime()) <= 7 * 24 * 60 * 60 * 1000; // Filter posts from the past week
-      //}).filter(post => post.likes >= 10); // Filter posts with at least 10 likes
-  
-      //const totalLikes = activePosts.reduce((likes, post) => likes + post.likes, 0);
-      //const numActivePosts = activePosts.length;
-  
-      //acc.activeUsers++;
-      //acc.totalPopularPosts += numActivePosts;
-  
-      //if (numActivePosts > 0) {
-        //acc.averageLikes += totalLikes / numActivePosts;
-      //}
-  
-      //return acc;
-    //}, {
-      //activeUsers: 0,
-      //totalPopularPosts: 0,
-      //averageLikes: 0,
-    //});
-  //}
-  
-  // Usage
-  //const analysisResult = analyzeSocialMediaData(users);
-  //console.log(analysisResult);
   
   const today= new Date().getDate();
   function Deassemble() {
