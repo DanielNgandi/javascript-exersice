@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+    }
+    .cal {
+        width: 550px; 
+        height:300px;
+        background-color:white;
+
+    }
+    .calculator {
+        width: 450px; 
+        height:250px;
+        background-color: whitesmoke;
+        padding: 20px;
+        margin-left: 30px;
+        border-radius: 5px;
+    }
+    .myprice, .myqual {
+        display: flex;
+        flex-direction: column;
+    }
+    #quality, #price{
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .total{
+        display: flex;
+        justify-content: end;
+        justify-content: end;
+    }
+    .head {
+        display: flex;
+        justify-content: center;
+
+    }
+
+
+</style>
+<body>
+  <div class = "cal">
+    <div class="head">
+        <h1>VANILLARS CALCULATOR</h1>
+    </div>
+    <div class="calculator">
+    <form>
+        <div class="myprice">
+            <label for="price">Price</label><br>
+            <input type="text" id="price" name="price" oninput="calculateproduct()"><br>
+          </div>
+    <div class="myqual">
+        <label for ="quality">quality</label> <br>
+        <input type="text" id="quality" name ="quality" oninput="calculateproduct()">
+    </div>   
+    </form><br>
+    <div class="total" id="result">
+      </div>
+  </div>
+  </div>
+  <script>
+    
+function calculateproduct() {
+    
+    const price = document.getElementById('price').value
+    const quality = document.getElementById('quality').value
+
+    const product = price * quality;
+
+    document.getElementById('result').textContent = `$ ${product}`;
+
+
+}
+  </script>
+</body>
+</html>
