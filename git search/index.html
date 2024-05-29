@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+     <div class = cointainer>
+        <div class ="head">
+            <h1>GITHUB SEARCH TOOL</h1>
+            <div class ="butt">
+            <input type="text" name="search" id="search">
+            <button id="btnSubmit" type="submit">search github</button>
+            </div>
+        </div>
+        <div class="myheading">
+            <img src="" alt="" id="image">
+               <div class="info">
+                <p id="name">DanielNgandi</p>
+                <p id="repos">repo</p>
+                <p id ="location">location</p>
+                <p id="bio">bio</p>
+               </div>
+           </div>
+           <div class="port">
+            <button>portfolio</button>
+            <button>Twitter_url</button>
+            </div>
+     </div>
+     <script>
+        const btn = document.getElementById('btnSubmit')
+const textInput = document.getElementById('search')
+
+const url = `https://api.github.com/users/`
+
+
+
+ 
+
+ btn.addEventListener('click', ()=>{
+   getQuery()
+    
+   })
+  
+
+  function getQuery(){
+    const query = textInput.value
+    alert(`you quered : ${query}`)
+
+    
+    fetchData(query).then((data) =>{
+      alert(JSON.stringify(data));
+   
+     populateData(data)
+    })
+               .catch((err) =>{
+                  alert('could not fetch data because: ' , err);
+               })
+  }
+
+
+
+const fetchData = async (query) =>{
+
+  try{
+      const responsePromise = await fetch(url + query)
+      return responsePromise.json() 
+  }
+    catch(Error){
+      throw Error
+    }              
+}
+
+function populateData(data){
+   const image = document.getElementById('image')
+   const name = document.getElementById('name')
+   const repos = document.getElementById('repos')
+   const location = document.getElementById('location')
+   const bio = document.getElementById('bio')
+
+
+   image.src = data.avatar_url
+   name.textContent = data.name
+   repos.textContent = data.public_repos
+   location.textContent = data.location
+   bio.textContent = data.bio
+}
+     </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.cointainer{
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    background-color: rgb(53, 14, 14);
+    color: whitesmoke;
+}
+.head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.butt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid black;
+    
+}
+.myheading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 20px;
+}
+.port{ 
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    height: 20px;
+    gap: 20px;
+}
