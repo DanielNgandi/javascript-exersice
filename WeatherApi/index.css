@@ -1,0 +1,111 @@
+body{
+    padding: 0;
+    background-image: url(/default.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.main{
+    justify-content: center;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+
+}
+.head{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 40px;
+      }
+.container{
+    border: 2px solid rgb(238, 233, 233);
+    border-radius: 10px;
+}
+.searcher{
+    border: 2px solid rgb(92, 91, 91);
+    border-radius: 5px;
+}
+.button1{
+    border: 2px solid rgb(92, 91, 91);
+    border-radius: 5px;
+}
+.weatherclimate{
+    width: 150px;
+    height: 150px;
+}
+
+.cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 150px;
+    padding: 20px;
+}
+img{
+    width: 50px;
+    height: 50px;
+
+}
+.days{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    column-gap: 50px;
+    justify-content: center;
+    height: 100px;
+    align-self: center;
+    line-break: 0;
+    margin: 0px;
+    
+}
+.day2{
+ display: flex;
+ flex-direction: column;
+ height: 250px;
+ width: 150px;
+ align-items: center;
+ justify-content: center;
+ margin-left: 20px;
+ border: 2px solid #add;
+ border-radius: 50px;
+
+}
+.day3{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    border: 2px solid #add;
+    border-radius: 50px;
+   
+   }
+   .day4{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    border: 2px solid #add;
+    border-radius: 50px;
+   
+   }
+   .day5{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    border: 2px solid #add;
+    border-radius: 50px;
+   
+   }

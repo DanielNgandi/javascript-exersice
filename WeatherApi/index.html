@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="main">
+        <div class="head">
+        <input type="text" class="searcher" placeholder="entercity">
+        <button class="button1">search</button> 
+        </div>
+          <div class="container">
+            <div class="cont">
+                <img class="weatherclimate" src="/sunny.png" alt="">
+                <div class="daily">
+                <p class="day">Today</p>
+                <p class="city">newyork</p>
+                <p class="temp">temp</p>
+                <p class="status">yes</p>
+                <p class ="humidity">hum</p>
+                </div>
+            </div>
+            <div class="days">
+              <div class="day2">
+                <p>sarturday</p>
+                <img src="/sunclear.png" alt=""  width="20">
+                <P>21°C</P>
+                <p class="status">yes</p>
+                <p class ="humidity">hum</p>
+              </div>
+
+              <div class="day3">
+                <p>sunday</p>
+                <img src="/cloudy.png" alt="">
+                <P>21°C</P>
+              </div>
+
+              <div class="day4">
+                <p>monday</p>
+                <img src="/rainny.png" alt="">
+                <P>21°C</P>
+              </div>
+
+              <div class="day5">
+                <p>tuesday</p>
+                <img src="/sunclear.png" alt="">
+                <P>21°C</P>
+              </div>
+
+            </div>
+          </div>
+    </div>
+
+    <script>
+      const currentWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
+const forecastWeatherUrl = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&q=';
+const apiKey = '&appid=4f9c77589eb5e1a53ec753937b355bbf';
+
+const searchbox = document.querySelector(".searcher");
+const searchbutton = document.querySelector('.button1');
+const weatherclimate = document.querySelector('.weatherclimate');
+
+async function getWeather(city) {
+    try {
+        const currentResponse = await fetch(currentWeatherUrl + city + apiKey);
+        if (!currentResponse.ok) {
+            throw new Error('City not found');
+        }
+
+        const forecastResponse = await fetch(forecastWeatherUrl + city + apiKey);
+        if (!forecastResponse.ok) {
+            throw new Error('City not found');
+        }
+
+        const currentResult = await currentResponse.json();
+        const forecastResult = await forecastResponse.json();
+
+        updateCurrentWeather(currentResult);
+        updateForecastWeather(forecastResult);
+    } catch (error) {
+        alert(error.message);
+        console.error(error);
+    }
+}
+
+function updateCurrentWeather(result) {
+    document.querySelector('.city').innerHTML = result.name;
+    document.querySelector('.temp').innerHTML = Math.round(result.main.temp) + '°C';
+    document.querySelector('.status').innerHTML = result.weather[0].description;
+    document.querySelector('.humidity').innerHTML = result.main.humidity;
+
+    const weatherCondition = result.weather[0].main.toLowerCase();
+    weatherclimate.src = getWeatherIcon(weatherCondition);
+}
+
+function updateForecastWeather(result) {
+    const forecastContainer = document.querySelector('.days');
+    forecastContainer.innerHTML = ''; // Clear previous forecast
+
+    // Filter forecast data for the next four days
+    const forecastData = result.list.filter(entry => entry.dt_txt.includes('12:00:00'));
+
+    forecastData.slice(0, 4).forEach((day, index) => {
+        const date = new Date(day.dt_txt);
+        const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const temp = Math.round(day.main.temp) + '°C';
+        const status = day.weather[0].description;
+
+        const dayDiv = document.createElement('div');
+        dayDiv.className = `day${index + 2}`;
+        dayDiv.innerHTML = `
+            <p>${dayName}</p>
+            <img src="${getWeatherIcon(day.weather[0].main.toLowerCase())}" alt="" width="20">
+            <p>${temp}</p>
+            <p class="status">${status}</p>
+            <p class="humidity">${day.main.humidity}</p>
+        `;
+
+        forecastContainer.appendChild(dayDiv);
+    });
+}
+
+function getWeatherIcon(condition) {
+    switch (condition) {
+        case 'clouds':
+            return '/cloudy.png';
+        case 'clear':
+            return '/sunclear.png';
+        case 'rain':
+            return '/rainny.png';
+        case 'wind':
+            return '/windy.png';
+        default:
+            return '/sunny.png';
+    }
+}
+
+searchbutton.addEventListener('click', () => {
+    if (searchbox.value) {
+        getWeather(searchbox.value);
+    } else {
+        alert('Please enter a city name.');
+    }
+});
+    </script>
+</body>
+</html>
